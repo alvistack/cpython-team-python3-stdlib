@@ -1,8 +1,9 @@
 python3-stdlib-extensions (3.6.5-4) unstable; urgency=medium
 
   * Update 3.7 extensions and modules to 3.7.0~b5.
+  * Add Vcs attributes.
 
- -- Matthias Klose <doko@debian.org>  Thu, 31 May 2018 12:59:20 +0200
+ -- Matthias Klose <doko@debian.org>  Wed, 06 Jun 2018 01:08:51 +0200
 
 python3-stdlib-extensions (3.6.5-3) unstable; urgency=medium
 

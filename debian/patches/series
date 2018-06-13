@@ -1,6 +1,6 @@
 # upstream updates
 #updates-3.6.diff
-updates-3.7.diff
+#updates-3.7.diff
 
 # 3.6
 3.6/distutils-install-layout.diff

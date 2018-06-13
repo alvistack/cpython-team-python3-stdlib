@@ -68,6 +68,7 @@ clean:
 	rm -rf 3.?/libBLT*
 	rm -f debian/python3-tk.postinst
 	rm -f debian/python3-distutils.postinst
+	find 3* -name __pycache__ | xargs -r rm -rf
 	dh_clean
 
 install: build install-prereq $(PYVERS:%=install-stamp-py%) $(PYVERS:%=dbg-install-py%)

@@ -1,3 +1,29 @@
+python3-stdlib-extensions (3.7.1-1ubuntu2) disco; urgency=medium
+
+  * Stop building extensions for python3.6.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 03 Nov 2018 15:47:32 +0100
+
+python3-stdlib-extensions (3.7.1-1) unstable; urgency=medium
+
+  * Update 3.6 extensions and modules to 3.6.7.
+  * Update 3.7 extensions and modules to 3.7.1.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 21 Oct 2018 11:30:14 +0200
+
+python3-stdlib-extensions (3.6.6-1) unstable; urgency=medium
+
+  * Update 3.6 extensions and modules to 3.6.6.
+  * Update 3.7 extensions and modules to 3.7.0.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 27 Jun 2018 17:01:32 +0200
+
+python3-stdlib-extensions (3.6.6~rc1-3) unstable; urgency=medium
+
+  * Don't ship generated files. Closes: #901637.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 16 Jun 2018 04:01:32 +0200
+
 python3-stdlib-extensions (3.6.6~rc1-2) unstable; urgency=medium
 
   * Use the distutils package from the source for the build.

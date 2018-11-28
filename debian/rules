@@ -14,9 +14,9 @@ export SHELL = /bin/bash
 #rel_ext	= $(strip $(shell dpkg-parsechangelog | awk -F- '/^Version:/ {print $$NF}'))
 
 PYVERS	= $(shell py3versions -vs)
-PYVERS	= 3.6 3.7
+PYVERS	= 3.7
 
-MIN_VER = 3.6.4-1~
+MIN_VER = 3.7.1-1~
 
 include /usr/share/dpkg/architecture.mk
 
@@ -100,10 +100,12 @@ install-stamp-py%: build-stamp-py%
 	rm -f -v $(d_dist)/usr/lib/python$*/distutils/{__init__,version}.py
 	rm -rf $(d_dist)/usr/lib/python$*/distutils/tests
 	rm -rf $(d_dist)/usr/lib/python$*/distutils/command/wininst-*.exe
+	find $(d_dist) -name __pycache__ | xargs -r rm -rf
 
 	mkdir -p $(d_2to3)/usr/lib/python$*
 	cp -r $*/Lib/lib2to3 $(d_2to3)/usr/lib/python$*/.
 	rm -rf $(d_2to3)/usr/lib/python$*/lib2to3/tests
+	find $(d_2to3) -name __pycache__ | xargs -r rm -rf
 
 dbg-install-py%: dbg-stamp-py%
 	cd $* && $(SET_ENV) python$*-dbg setup.py install \
@@ -122,16 +124,16 @@ binary-indep: build install
 	dh_testroot
 	dh_installchangelogs -i
 	dh_installdocs -p$(p_dist) -p$(p_2to3) debian/README.Debian
-ifeq (1,1)
+ifeq (0,1)
 	( \
-	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.8)'; \
-	  echo 'python3:Versions=3.6, 3.7'; \
-	  echo 'python3:Provides=python3.6-distutils, python3.7-distutils'; \
+	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.9)'; \
+	  echo 'python3:Versions=3.7, 3.8'; \
+	  echo 'python3:Provides=python3.7-distutils, python3.8-distutils'; \
 	) >> debian/python3-distutils.substvars
 	( \
-	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.8)'; \
-	  echo 'python3:Versions=3.6, 3.7'; \
-	  echo 'python3:Provides=python3.6-lib2to3, python3.7-lib2to3'; \
+	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.9)'; \
+	  echo 'python3:Versions=3.7, 3.8'; \
+	  echo 'python3:Provides=python3.7-lib2to3, python3.8-lib2to3'; \
 	) >> debian/python3-lib2to3.substvars
 else
 	( \
@@ -171,16 +173,16 @@ binary-arch: build install
 	ln -s $(p_tk) $(d_tk)-dbg/usr/share/doc/$(p_tk)-dbg
 	dh_strip -p$(p_gdbm) --dbg-package=$(p_gdbm)-dbg
 	dh_strip -p$(p_tk) --dbg-package=$(p_tk)-dbg
-ifeq (1,1)
+ifeq (0,1)
 	( \
-	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.8)'; \
-	  echo 'python3:Versions=3.6, 3.7'; \
-	  echo 'python3:Provides=python3.6-gdbm, python3.7-gdbm'; \
+	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.9)'; \
+	  echo 'python3:Versions=3.7, 3.8'; \
+	  echo 'python3:Provides=python3.7-gdbm, python3.8-gdbm'; \
 	) >> debian/python3-gdbm.substvars
 	( \
-	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.8)'; \
-	  echo 'python3:Versions=3.6, 3.7'; \
-	  echo 'python3:Provides=python3.6-tk, python3.7-tk'; \
+	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.9)'; \
+	  echo 'python3:Versions=3.7, 3.8'; \
+	  echo 'python3:Provides=python3.7-tk, python3.8-tk'; \
 	) >> debian/python3-tk.substvars
 else
 	( \

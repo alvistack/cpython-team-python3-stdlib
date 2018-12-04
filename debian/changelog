@@ -1,8 +1,8 @@
-python3-stdlib-extensions (3.7.1-1ubuntu2) disco; urgency=medium
+python3-stdlib-extensions (3.7.1-2) UNRELEASED; urgency=medium
 
   * Stop building extensions for python3.6.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 03 Nov 2018 15:47:32 +0100
+ -- Matthias Klose <doko@debian.org>  Tue, 04 Dec 2018 10:56:09 +0100
 
 python3-stdlib-extensions (3.7.1-1) unstable; urgency=medium
 

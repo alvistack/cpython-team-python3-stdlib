@@ -230,7 +230,7 @@ class build_ext(Command):
         # For building extensions with a shared Python library,
         # Python's library directory must be appended to library_dirs
         # See Issues: #1600860, #4366
-        if (sysconfig.get_config_var('Py_ENABLE_SHARED')):
+        if False and (sysconfig.get_config_var('Py_ENABLE_SHARED')):
             if not sysconfig.python_build:
                 # building third party extensions
                 self.library_dirs.append(sysconfig.get_config_var('LIBDIR'))
@@ -365,7 +365,7 @@ class build_ext(Command):
             ext_name, build_info = ext
 
             log.warn("old-style (ext_name, build_info) tuple found in "
-                     "ext_modules for extension '%s'"
+                     "ext_modules for extension '%s' "
                      "-- please convert to Extension instance", ext_name)
 
             if not (isinstance(ext_name, str) and
@@ -723,7 +723,7 @@ class build_ext(Command):
             return ext.libraries
         else:
             from distutils import sysconfig
-            if sysconfig.get_config_var('Py_ENABLE_SHARED'):
+            if False and sysconfig.get_config_var('Py_ENABLE_SHARED'):
                 pythonlib = 'python{}.{}{}'.format(
                     sys.hexversion >> 24, (sys.hexversion >> 16) & 0xff,
                     sysconfig.get_config_var('ABIFLAGS'))

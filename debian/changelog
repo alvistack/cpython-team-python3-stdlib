@@ -1,8 +1,10 @@
-python3-stdlib-extensions (3.7.1-2) UNRELEASED; urgency=medium
+python3-stdlib-extensions (3.7.2-1) unstable; urgency=medium
 
+  * Update 3.6 extensions and modules to 3.6.8.
+  * Update 3.7 extensions and modules to 3.7.2.
   * Stop building extensions for python3.6.
 
- -- Matthias Klose <doko@debian.org>  Tue, 04 Dec 2018 10:56:09 +0100
+ -- Matthias Klose <doko@debian.org>  Thu, 03 Jan 2019 06:19:13 +0100
 
 python3-stdlib-extensions (3.7.1-1) unstable; urgency=medium
 

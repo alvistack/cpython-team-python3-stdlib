@@ -25,6 +25,7 @@ case "$1" in
 	remove_bytecode python3-lib2to3
         ;;
     upgrade)
+	remove_bytecode python3-lib2to3
         ;;
     deconfigure)
         ;;

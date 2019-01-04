@@ -25,6 +25,7 @@ case "$1" in
 	remove_bytecode python3-distutils
         ;;
     upgrade)
+	remove_bytecode python3-distutils
         ;;
     deconfigure)
         ;;

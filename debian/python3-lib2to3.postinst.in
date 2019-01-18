@@ -19,9 +19,11 @@ case "$1" in
 	echo >&2 "$python: can't get files for byte-compilation"
       fi
     done
-    if [ -n "$2" ] && dpkg --compare-versions $2 lt 3.7.2-2~; then
+    if [ -n "$2" ] && dpkg --compare-versions $2 lt 3.7.2-3~; then
 	find /usr/lib/python3.6/lib2to3 -name __pycache__ | xargs -r rm -rf
 	find /usr/lib/python3.6/lib2to3 -empty -type d -delete || true
+	find /usr/lib/python3.6 -maxdepth 0 -empty -type d -delete || true
+
     fi
 esac
 

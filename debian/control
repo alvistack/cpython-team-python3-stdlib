@@ -13,7 +13,7 @@ Build-Depends: debhelper (>= 9), rdfind,
 #  python3.8-dbg:any,
   tk-dev, blt-dev (>= 2.4z-9), libgdbm-dev
 Build-Conflicts: tcl8.4-dev, tk8.4-dev, tcl8.5-dev, tk8.5-dev
-Standards-Version: 4.2.1
+Standards-Version: 4.3.0
 Vcs-Git: https://salsa.debian.org/cpython-team/python3-stdlib.git
 Vcs-Browser: https://salsa.debian.org/cpython-team/python3-stdlib
 

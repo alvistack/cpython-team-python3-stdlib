@@ -1,3 +1,10 @@
+python3-stdlib-extensions (3.7.2-3) unstable; urgency=medium
+
+  * Clean up empty directories on upgrade. Closes: #918182.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 18 Jan 2019 09:45:15 +0100
+
 python3-stdlib-extensions (3.7.2-2) unstable; urgency=medium
 
   * Remove 3.6 bytecode files on upgrade. Closes: #918098.

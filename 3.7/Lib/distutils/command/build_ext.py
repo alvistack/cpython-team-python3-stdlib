@@ -161,9 +161,10 @@ class build_ext(Command):
 
         # Put the Python "system" include dir at the end, so that
         # any local include dirs take precedence.
-        self.include_dirs.append(py_include)
+        self.include_dirs.extend(py_include.split(os.path.pathsep))
         if plat_py_include != py_include:
-            self.include_dirs.append(plat_py_include)
+            self.include_dirs.extend(
+                plat_py_include.split(os.path.pathsep))
 
         self.ensure_string_list('libraries')
         self.ensure_string_list('link_objects')
@@ -230,7 +231,7 @@ class build_ext(Command):
         # For building extensions with a shared Python library,
         # Python's library directory must be appended to library_dirs
         # See Issues: #1600860, #4366
-        if False and (sysconfig.get_config_var('Py_ENABLE_SHARED')):
+        if (sysconfig.get_config_var('Py_ENABLE_SHARED')):
             if not sysconfig.python_build:
                 # building third party extensions
                 self.library_dirs.append(sysconfig.get_config_var('LIBDIR'))
@@ -723,7 +724,7 @@ class build_ext(Command):
             return ext.libraries
         else:
             from distutils import sysconfig
-            if False and sysconfig.get_config_var('Py_ENABLE_SHARED'):
+            if sysconfig.get_config_var('Py_ENABLE_SHARED'):
                 pythonlib = 'python{}.{}{}'.format(
                     sys.hexversion >> 24, (sys.hexversion >> 16) & 0xff,
                     sysconfig.get_config_var('ABIFLAGS'))

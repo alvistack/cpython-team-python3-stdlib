@@ -155,17 +155,6 @@ class UnixCCompiler(CCompiler):
                                         runtime_library_dirs)
         libraries, library_dirs, runtime_library_dirs = fixed_args
 
-        # filter out standard library paths, which are not explicitely needed
-        # for linking
-        system_libdirs = ['/lib', '/lib64', '/usr/lib', '/usr/lib64']
-        multiarch = sysconfig.get_config_var("MULTIARCH")
-        if multiarch:
-            system_libdirs.extend(['/lib/%s' % multiarch, '/usr/lib/%s' % multiarch])
-        library_dirs = [dir for dir in library_dirs
-                        if not dir in system_libdirs]
-        runtime_library_dirs = [dir for dir in runtime_library_dirs
-                                if not dir in system_libdirs]
-
         lib_opts = gen_lib_options(self, library_dirs, runtime_library_dirs,
                                    libraries)
         if not isinstance(output_dir, (str, type(None))):
@@ -199,7 +188,15 @@ class UnixCCompiler(CCompiler):
                         i = 1
                         while '=' in linker[i]:
                             i += 1
-                    linker[i] = self.compiler_cxx[i]
+
+                    if os.path.basename(linker[i]) == 'ld_so_aix':
+                        # AIX platforms prefix the compiler with the ld_so_aix
+                        # script, so we need to adjust our linker index
+                        offset = 1
+                    else:
+                        offset = 0
+
+                    linker[i+offset] = self.compiler_cxx[i]
 
                 if sys.platform == 'darwin':
                     linker = _osx_support.compiler_fixup(linker, ld_args)

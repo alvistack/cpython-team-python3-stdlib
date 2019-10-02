@@ -1,3 +1,11 @@
+python3-stdlib-extensions (3.7.5~rc1-1) unstable; urgency=medium
+
+  * Update 3.7 extensions and modules to 3.7.5 release candidate 1.
+  * Update 3.8 extensions and modules to 3.8.0 release candidate 1.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 02 Oct 2019 07:11:03 +0200
+
 python3-stdlib-extensions (3.7.4-3) unstable; urgency=medium
 
   * Don't encode the MACHDEP into the _sysconfigdata file name.

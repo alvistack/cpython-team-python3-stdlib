@@ -35,3 +35,4 @@
 3.8/disable-some-tests.diff
 3.8/mangle-fstack-protector.diff
 3.8/lib2to3-no-pickled-grammar.diff
+3.8/sysconfigdata-name.diff

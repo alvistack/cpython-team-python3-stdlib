@@ -9,7 +9,7 @@ Build-Depends: debhelper (>= 9), rdfind,
   python3.7-dbg:any,
   libpython3.8-dev,
   libpython3.8-dbg,
-  python3.8-dev:any (>= 3.8.0~b2-5),
+  python3.8-dev:any,
   python3.8-dbg:any,
   tk-dev, blt-dev (>= 2.4z-9), libgdbm-dev
 Build-Conflicts: tcl8.4-dev, tk8.4-dev, tcl8.5-dev, tk8.5-dev

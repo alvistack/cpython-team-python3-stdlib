@@ -14,7 +14,7 @@ export SHELL = /bin/bash
 #rel_ext	= $(strip $(shell dpkg-parsechangelog | awk -F- '/^Version:/ {print $$NF}'))
 
 PYVERS	= $(shell py3versions -vs)
-PYVERS	= 3.7 3.8
+PYVERS	= 3.8
 
 MIN_VER = 3.8.0-1~
 
@@ -125,7 +125,7 @@ binary-indep: build install
 	dh_testroot
 	dh_installchangelogs -i
 	dh_installdocs -p$(p_dist) -p$(p_2to3) debian/README.Debian
-ifeq (1,1)
+ifeq (0,1)
 	( \
 	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.9)'; \
 	  echo 'python3:Versions=3.7, 3.8'; \
@@ -138,14 +138,14 @@ ifeq (1,1)
 	) >> debian/python3-lib2to3.substvars
 else
 	( \
-	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.8)'; \
-	  echo 'python3:Versions=3.7'; \
-	  echo 'python3:Provides=python3.7-distutils'; \
+	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.9)'; \
+	  echo 'python3:Versions=3.8'; \
+	  echo 'python3:Provides=python3.8-distutils'; \
 	) >> debian/python3-distutils.substvars
 	( \
-	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.8)'; \
-	  echo 'python3:Versions=3.7'; \
-	  echo 'python3:Provides=python3.7-lib2to3'; \
+	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.9)'; \
+	  echo 'python3:Versions=3.8'; \
+	  echo 'python3:Provides=python3.8-lib2to3'; \
 	) >> debian/python3-lib2to3.substvars
 endif
 	dh_lintian -i
@@ -174,7 +174,7 @@ binary-arch: build install
 	ln -s $(p_tk) $(d_tk)-dbg/usr/share/doc/$(p_tk)-dbg
 	dh_strip -p$(p_gdbm) --dbg-package=$(p_gdbm)-dbg
 	dh_strip -p$(p_tk) --dbg-package=$(p_tk)-dbg
-ifeq (1,1)
+ifeq (0,1)
 	( \
 	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.9)'; \
 	  echo 'python3:Versions=3.7, 3.8'; \
@@ -187,14 +187,14 @@ ifeq (1,1)
 	) >> debian/python3-tk.substvars
 else
 	( \
-	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.8)'; \
-	  echo 'python3:Versions=3.7'; \
-	  echo 'python3:Provides=python3.7-gdbm'; \
+	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.9)'; \
+	  echo 'python3:Versions=3.8'; \
+	  echo 'python3:Provides=python3.8-gdbm'; \
 	) >> debian/python3-gdbm.substvars
 	( \
-	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.8)'; \
-	  echo 'python3:Versions=3.7'; \
-	  echo 'python3:Provides=python3.7-tk'; \
+	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< 3.9)'; \
+	  echo 'python3:Versions=3.8'; \
+	  echo 'python3:Provides=python3.8-tk'; \
 	) >> debian/python3-tk.substvars
 endif
 	dh_lintian -a

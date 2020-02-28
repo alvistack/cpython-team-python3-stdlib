@@ -3,10 +3,10 @@ Section: python
 Priority: optional
 Maintainer: Matthias Klose <doko@debian.org>
 Build-Depends: debhelper (>= 9), rdfind,
-  libpython3.7-dev,
-  libpython3.7-dbg,
-  python3.7-dev:any,
-  python3.7-dbg:any,
+#  libpython3.7-dev,
+#  libpython3.7-dbg,
+#  python3.7-dev:any,
+#  python3.7-dbg:any,
   libpython3.8-dev,
   libpython3.8-dbg,
   python3.8-dev:any,

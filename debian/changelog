@@ -2,8 +2,10 @@ python3-stdlib-extensions (3.8.2-1) unstable; urgency=medium
 
   * Update 3.7 extensions and modules to 3.7.6 release.
   * Update 3.8 extensions and modules to 3.8.2 release.
+  * Remove version information from the python3-lib2to3 package description.
+    Closes: #920867.
 
- -- Matthias Klose <doko@debian.org>  Tue, 25 Feb 2020 14:53:31 +0100
+ -- Matthias Klose <doko@debian.org>  Fri, 28 Feb 2020 12:31:06 +0100
 
 python3-stdlib-extensions (3.8.0-1) unstable; urgency=medium
 

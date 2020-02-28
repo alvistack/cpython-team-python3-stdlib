@@ -90,8 +90,8 @@ Replaces: libpython3.6-stdlib (<< 3.6.4~rc1-2),
   libpython3.7-stdlib (<< 3.7.0~a3-3),
   python3.6-2to3 (<< 3.6.4-2),
   python3.7-2to3 (<< 3.7.0~a3-3),
-Description: Interactive high-level object-oriented language (2to3, version 3.6)
- Python is a high-level, interactive, object-oriented language. Its 3.6 version
+Description: Interactive high-level object-oriented language (lib2to3)
+ Python is a high-level, interactive, object-oriented language. It
  includes an extensive class library with lots of goodies for
  network programming, system administration, sounds and graphics.
  .

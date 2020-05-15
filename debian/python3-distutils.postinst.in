@@ -24,6 +24,11 @@ case "$1" in
 	find /usr/lib/python3.6/distutils -empty -type d -delete || true
 	find /usr/lib/python3.6 -maxdepth 0 -empty -type d -delete || true
     fi
+    if [ -n "$2" ] && dpkg --compare-versions $2 lt 3.8.3-2~; then
+	find /usr/lib/python3.7/distutils -name __pycache__ | xargs -r rm -rf
+	find /usr/lib/python3.7/distutils -empty -type d -delete || true
+	find /usr/lib/python3.7 -maxdepth 0 -empty -type d -delete || true
+    fi
 esac
 
 #DEBHELPER#

@@ -92,19 +92,6 @@ def _find_vc2017():
 def _find_vcvarsall(plat_spec):
     # bpo-38597: Removed vcruntime return value
     _, best_dir = _find_vc2017()
-<<<<<<< HEAD
-=======
-    vcruntime = None
-    vcruntime_plat = 'x64' if 'amd64' in plat_spec else 'x86'
-    if best_dir:
-        vcredist = os.path.join(best_dir, "..", "..", "redist", "MSVC", "**",
-            vcruntime_plat, "Microsoft.VC14*.CRT", "vcruntime140.dll")
-        try:
-            import glob
-            vcruntime = glob.glob(vcredist, recursive=True)[-1]
-        except (ImportError, OSError, LookupError):
-            vcruntime = None
->>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
 
     if not best_dir:
         best_version, best_dir = _find_vc2015()

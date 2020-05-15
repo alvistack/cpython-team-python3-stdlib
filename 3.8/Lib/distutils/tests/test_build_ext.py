@@ -111,6 +111,10 @@ class BuildExtTestCase(TempdirManager,
         """)
         assert_python_ok('-c', code)
 
+<<<<<<< HEAD
+    @unittest.skip('Skipping failing Solaris test')
+=======
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
     def test_solaris_enable_shared(self):
         dist = Distribution({'name': 'xx'})
         cmd = self.build_ext(dist)

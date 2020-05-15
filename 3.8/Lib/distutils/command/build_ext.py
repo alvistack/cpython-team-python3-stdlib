@@ -231,7 +231,11 @@ class build_ext(Command):
         # For building extensions with a shared Python library,
         # Python's library directory must be appended to library_dirs
         # See Issues: #1600860, #4366
+<<<<<<< HEAD
+        if False and (sysconfig.get_config_var('Py_ENABLE_SHARED')):
+=======
         if (sysconfig.get_config_var('Py_ENABLE_SHARED')):
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
             if not sysconfig.python_build:
                 # building third party extensions
                 self.library_dirs.append(sysconfig.get_config_var('LIBDIR'))
@@ -733,7 +737,11 @@ class build_ext(Command):
             # shared libraries are resolved at link time.
             from distutils.sysconfig import get_config_var
             link_libpython = False
+<<<<<<< HEAD
+            if False and get_config_var('Py_ENABLE_SHARED'):
+=======
             if get_config_var('Py_ENABLE_SHARED'):
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
                 # A native build on an Android device or on Cygwin
                 if hasattr(sys, 'getandroidapilevel'):
                     link_libpython = True

@@ -13,6 +13,10 @@ import _imp
 import os
 import re
 import sys
+<<<<<<< HEAD
+import fnmatch
+=======
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
 
 from .errors import DistutilsPlatformError
 from .util import get_platform, get_host_platform
@@ -111,6 +115,12 @@ def get_python_inc(plat_specific=0, prefix=None):
                 incdir = os.path.join(get_config_var('srcdir'), 'Include')
                 return os.path.normpath(incdir)
         python_dir = 'python' + get_python_version() + build_flags
+<<<<<<< HEAD
+        if not python_build and plat_specific:
+            import sysconfig
+            return sysconfig.get_path('platinclude')
+=======
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
         return os.path.join(prefix, "include", python_dir)
     elif os.name == "nt":
         if python_build:
@@ -139,6 +149,10 @@ def get_python_lib(plat_specific=0, standard_lib=0, prefix=None):
     If 'prefix' is supplied, use it instead of sys.base_prefix or
     sys.base_exec_prefix -- i.e., ignore 'plat_specific'.
     """
+<<<<<<< HEAD
+    is_default_prefix = not prefix or os.path.normpath(prefix) in ('/usr', '/usr/local')
+=======
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
     if prefix is None:
         if standard_lib:
             prefix = plat_specific and BASE_EXEC_PREFIX or BASE_PREFIX
@@ -150,6 +164,15 @@ def get_python_lib(plat_specific=0, standard_lib=0, prefix=None):
                                  "lib", "python" + get_python_version())
         if standard_lib:
             return libpython
+<<<<<<< HEAD
+        elif (is_default_prefix and
+              'PYTHONUSERBASE' not in os.environ and
+              'VIRTUAL_ENV' not in os.environ and
+              'real_prefix' not in sys.__dict__ and
+              sys.prefix == sys.base_prefix):
+            return os.path.join(prefix, "lib", "python3", "dist-packages")
+=======
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
         else:
             return os.path.join(libpython, "site-packages")
     elif os.name == "nt":
@@ -187,9 +210,17 @@ def customize_compiler(compiler):
                 _osx_support.customize_compiler(_config_vars)
                 _config_vars['CUSTOMIZED_OSX_COMPILER'] = 'True'
 
+<<<<<<< HEAD
+        (cc, cxx, cflags, ccshared, ldshared, shlib_suffix, ar, ar_flags,
+         configure_cppflags, configure_cflags, configure_ldflags) = \
+            get_config_vars('CC', 'CXX', 'CFLAGS',
+                            'CCSHARED', 'LDSHARED', 'SHLIB_SUFFIX', 'AR', 'ARFLAGS',
+                            'CONFIGURE_CPPFLAGS', 'CONFIGURE_CFLAGS', 'CONFIGURE_LDFLAGS')
+=======
         (cc, cxx, cflags, ccshared, ldshared, shlib_suffix, ar, ar_flags) = \
             get_config_vars('CC', 'CXX', 'CFLAGS',
                             'CCSHARED', 'LDSHARED', 'SHLIB_SUFFIX', 'AR', 'ARFLAGS')
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
 
         if 'CC' in os.environ:
             newcc = os.environ['CC']
@@ -202,6 +233,13 @@ def customize_compiler(compiler):
             cc = newcc
         if 'CXX' in os.environ:
             cxx = os.environ['CXX']
+<<<<<<< HEAD
+        if fnmatch.filter([cc, cxx], '*-4.[0-8]'):
+            configure_cflags = configure_cflags.replace('-fstack-protector-strong', '-fstack-protector')
+            ldshared = ldshared.replace('-fstack-protector-strong', '-fstack-protector')
+            cflags = cflags.replace('-fstack-protector-strong', '-fstack-protector')
+=======
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
         if 'LDSHARED' in os.environ:
             ldshared = os.environ['LDSHARED']
         if 'CPP' in os.environ:
@@ -210,13 +248,31 @@ def customize_compiler(compiler):
             cpp = cc + " -E"           # not always
         if 'LDFLAGS' in os.environ:
             ldshared = ldshared + ' ' + os.environ['LDFLAGS']
+<<<<<<< HEAD
+        elif configure_ldflags:
+            ldshared = ldshared + ' ' + configure_ldflags
         if 'CFLAGS' in os.environ:
             cflags = cflags + ' ' + os.environ['CFLAGS']
             ldshared = ldshared + ' ' + os.environ['CFLAGS']
+        elif configure_cflags:
+            cflags = cflags + ' ' + configure_cflags
+            ldshared = ldshared + ' ' + configure_cflags
+=======
+        if 'CFLAGS' in os.environ:
+            cflags = cflags + ' ' + os.environ['CFLAGS']
+            ldshared = ldshared + ' ' + os.environ['CFLAGS']
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
         if 'CPPFLAGS' in os.environ:
             cpp = cpp + ' ' + os.environ['CPPFLAGS']
             cflags = cflags + ' ' + os.environ['CPPFLAGS']
             ldshared = ldshared + ' ' + os.environ['CPPFLAGS']
+<<<<<<< HEAD
+        elif configure_cppflags:
+            cpp = cpp + ' ' + configure_cppflags
+            cflags = cflags + ' ' + configure_cppflags
+            ldshared = ldshared + ' ' + configure_cppflags
+=======
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
         if 'AR' in os.environ:
             ar = os.environ['AR']
         if 'ARFLAGS' in os.environ:
@@ -433,9 +489,14 @@ def _init_posix():
     """Initialize the module as appropriate for POSIX systems."""
     # _sysconfigdata is generated at build time, see the sysconfig module
     name = os.environ.get('_PYTHON_SYSCONFIGDATA_NAME',
+<<<<<<< HEAD
+        '_sysconfigdata_{abi}_{multiarch}'.format(
+        abi=sys.abiflags,
+=======
         '_sysconfigdata_{abi}_{platform}_{multiarch}'.format(
         abi=sys.abiflags,
         platform=sys.platform,
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
         multiarch=getattr(sys.implementation, '_multiarch', ''),
     ))
     _temp = __import__(name, globals(), locals(), ['build_time_vars'], 0)

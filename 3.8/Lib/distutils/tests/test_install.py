@@ -193,7 +193,11 @@ class InstallTestCase(support.TempdirManager,
         found = [os.path.basename(line) for line in content.splitlines()]
         expected = ['hello.py', 'hello.%s.pyc' % sys.implementation.cache_tag,
                     'sayhi',
+<<<<<<< HEAD
+                    'UNKNOWN-0.0.0.egg-info']
+=======
                     'UNKNOWN-0.0.0-py%s.%s.egg-info' % sys.version_info[:2]]
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
         self.assertEqual(found, expected)
 
     def test_record_extensions(self):
@@ -226,7 +230,11 @@ class InstallTestCase(support.TempdirManager,
 
         found = [os.path.basename(line) for line in content.splitlines()]
         expected = [_make_ext_name('xx'),
+<<<<<<< HEAD
+                    'UNKNOWN-0.0.0.egg-info']
+=======
                     'UNKNOWN-0.0.0-py%s.%s.egg-info' % sys.version_info[:2]]
+>>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
         self.assertEqual(found, expected)
 
     def test_debug_mode(self):

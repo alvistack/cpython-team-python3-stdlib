@@ -96,12 +96,6 @@ def create_tree(base_dir, files, mode=0o777, verbose=1, dry_run=0):
     for dir in sorted(need_dir):
         mkpath(dir, mode, verbose=verbose, dry_run=dry_run)
 
-<<<<<<< HEAD
-import sysconfig
-_multiarch = None
-
-=======
->>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
 def copy_tree(src, dst, preserve_mode=1, preserve_times=1,
               preserve_symlinks=0, update=0, verbose=1, dry_run=0):
     """Copy an entire directory tree 'src' to a new location 'dst'.
@@ -137,16 +131,6 @@ def copy_tree(src, dst, preserve_mode=1, preserve_times=1,
             raise DistutilsFileError(
                   "error listing files in '%s': %s" % (src, e.strerror))
 
-<<<<<<< HEAD
-    ext_suffix = sysconfig.get_config_var ('EXT_SUFFIX')
-    _multiarch = sysconfig.get_config_var ('MULTIARCH')
-    if ext_suffix.endswith(_multiarch + ext_suffix[-3:]):
-        new_suffix = None
-    else:
-        new_suffix = "%s-%s%s" % (ext_suffix[:-3], _multiarch, ext_suffix[-3:])
-
-=======
->>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
     if not dry_run:
         mkpath(dst, verbose=verbose)
 
@@ -155,12 +139,6 @@ def copy_tree(src, dst, preserve_mode=1, preserve_times=1,
     for n in names:
         src_name = os.path.join(src, n)
         dst_name = os.path.join(dst, n)
-<<<<<<< HEAD
-        if new_suffix and _multiarch and n.endswith(ext_suffix) and not n.endswith(new_suffix):
-            dst_name = os.path.join(dst, n.replace(ext_suffix, new_suffix))
-            log.info("renaming extension %s -> %s", n, n.replace(ext_suffix, new_suffix))
-=======
->>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
 
         if n.startswith('.nfs'):
             # skip NFS rename files

@@ -372,13 +372,6 @@ class bdist_wininst(Command):
         filename = os.path.join(directory, "wininst-%s%s.exe" % (bv, sfix))
         f = open(filename, "rb")
         try:
-<<<<<<< HEAD
-            f = open(filename, "rb")
-        except IOError as e:
-            raise DistutilsFileError(str(e) + ', %s not included in the Debian packages.' % filename)
-        try:
-=======
->>>>>>> 6aa4a17f1ec6cc2c37b6ee73e3a1f8d720e0610d
             return f.read()
         finally:
             f.close()

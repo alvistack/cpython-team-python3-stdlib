@@ -6,3 +6,6 @@ python3-stdlib-extensions source: source-package-encodes-python-version
 
 # unused, and can be built from source using mingw-64
 python3-stdlib-extensions source: source-contains-prebuilt-windows-binary
+
+# yes, we do
+python3-stdlib-extensions source: debian-rules-uses-supported-python-versions-without-python-all-build-depends

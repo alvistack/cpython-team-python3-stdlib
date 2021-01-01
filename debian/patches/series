@@ -36,3 +36,15 @@
 3.8/mangle-fstack-protector.diff
 3.8/lib2to3-no-pickled-grammar.diff
 3.8/sysconfigdata-name.diff
+# 3.9
+3.9/distutils-install-layout.diff
+3.9/distutils-link.diff
+3.9/distutils-sysconfig.diff
+3.9/bdist-wininst-notfound.diff
+3.9/multiarch.diff
+3.9/ext-no-libpython-link.diff
+3.9/multiarch-extname.diff
+3.9/disable-some-tests.diff
+3.9/mangle-fstack-protector.diff
+3.9/lib2to3-no-pickled-grammar.diff
+3.9/sysconfigdata-name.diff

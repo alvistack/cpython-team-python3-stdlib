@@ -1,9 +1,13 @@
-python3-stdlib-extensions (3.9.0-1) experimental; urgency=medium
+python3-stdlib-extensions (3.9.1-1) unstable; urgency=medium
 
-  * Bump version to 3.9.
-  * Add 3.10 extensions and modules for 3.10.0~a2.
+  * Update 3.9 extensions and modules to the 3.9.1 release.
+  * Update 3.8 extensions and modules to the 3.8.7 release.
+  * Stop building the extensions for 3.8. Closes: #976846.
+  * python3-lib2to3, python3-distutils: Add the :any qualifier to the
+    python3 dependencies. See: #964330.
+  * Bump standards versions.
 
- -- Matthias Klose <doko@debian.org>  Sun, 08 Nov 2020 11:09:28 +0100
+ -- Matthias Klose <doko@debian.org>  Tue, 22 Dec 2020 19:55:15 +0100
 
 python3-stdlib-extensions (3.8.6-1) unstable; urgency=medium
 

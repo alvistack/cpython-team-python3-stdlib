@@ -14,10 +14,10 @@ export SHELL = /bin/bash
 #rel_ext	= $(strip $(shell dpkg-parsechangelog | awk -F- '/^Version:/ {print $$NF}'))
 
 PYVERS	= $(shell py3versions -vs)
-PYVERS	= 3.8 3.9 3.10
+PYVERS	= 3.9
 
-MIN_VER = 3.8.6-0~
-NEXT_VER = 3.11
+MIN_VER = 3.9.1-0~
+NEXT_VER = 3.10
 
 include /usr/share/dpkg/architecture.mk
 
@@ -132,12 +132,12 @@ binary-indep: build install
 	dh_installchangelogs -i
 	dh_installdocs -p$(p_dist) -p$(p_2to3) debian/README.Debian
 	( \
-	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< $(NEXT_VER))'; \
+	  echo 'python3:Depends=python3:any (>= $(MIN_VER)), python3:any (<< $(NEXT_VER))'; \
 	  echo 'python3:Versions=$(call _pyver,,$(PYVERS),)'; \
 	  echo 'python3:Provides=$(call _pyver,python,$(PYVERS),-distutils)'; \
 	) >> debian/python3-distutils.substvars
 	( \
-	  echo 'python3:Depends=python3 (>= $(MIN_VER)), python3 (<< $(NEXT_VER))'; \
+	  echo 'python3:Depends=python3:any (>= $(MIN_VER)), python3:any (<< $(NEXT_VER))'; \
 	  echo 'python3:Versions=$(call _pyver,,$(PYVERS),)'; \
 	  echo 'python3:Provides=$(call _pyver,python,$(PYVERS),-lib2to3)'; \
 	) >> debian/python3-lib2to3.substvars

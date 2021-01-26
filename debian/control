@@ -79,6 +79,7 @@ Depends: ${python3:Depends}, ${misc:Depends}, python3-lib2to3 (= ${binary:Versio
 Provides: ${python3:Provides}
 Breaks: libpython3.6-stdlib (<< 3.6.5~rc1-3), libpython3.7-stdlib (<< 3.7.0~b2-2),
   libpython3.8-stdlib (<< 3.8.0~b2-5),
+  python3.8,
 Replaces: libpython3.6-stdlib (<< 3.6.4~rc1-2), libpython3.7-stdlib (<< 3.7.0~a3-2)
 Description: distutils package for Python 3.x
  Distutils package for Python 3.x.  This package contains the distutils module
@@ -94,6 +95,7 @@ Breaks: libpython3.6-stdlib (<< 3.6.4~rc1-2),
   libpython3.7-stdlib (<< 3.7.0~a3-3),
   python3.6-2to3 (<< 3.6.4-2),
   python3.7-2to3 (<< 3.7.0~a3-3),
+  python3.8,
 Replaces: libpython3.6-stdlib (<< 3.6.4~rc1-2),
   libpython3.7-stdlib (<< 3.7.0~a3-3),
   python3.6-2to3 (<< 3.6.4-2),

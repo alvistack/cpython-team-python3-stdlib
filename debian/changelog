@@ -1,6 +1,6 @@
-python3-stdlib-extensions (3.9.2~rc1-1) UNRELEASED; urgency=medium
+python3-stdlib-extensions (3.9.2-1) unstable; urgency=medium
 
-  * Update 3.9 extensions and modules to the 3.9.2 release candidate.
+  * Update 3.9 extensions and modules to the 3.9.2 release.
     IDLE changes:
     - bpo-23544: Disable Debug=>Stack Viewer when user code is running or
       Debugger is active, to prevent hang or crash.
@@ -9,9 +9,8 @@ python3-stdlib-extensions (3.9.2~rc1-1) UNRELEASED; urgency=medium
     - bpo-33065: Fix problem debugging user classes with __repr__ method.
     - bpo-32631: Finish zzdummy example extension module: make menu entries
       work; add docstrings and tests with 100% coverage.
-  * Add unconditional breaks to python3.8. Closes: #979819.
 
- -- Matthias Klose <doko@debian.org>  Wed, 17 Feb 2021 16:56:41 +0100
+ -- Matthias Klose <doko@debian.org>  Sat, 20 Feb 2021 12:43:30 +0100
 
 python3-stdlib-extensions (3.9.1-2) unstable; urgency=medium
 

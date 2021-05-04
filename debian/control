@@ -15,10 +15,10 @@ Build-Depends: debhelper (>= 10), rdfind,
   libpython3.9-dbg,
   python3.9-dev:any,
   python3.9-dbg:any,
-#  libpython3.10-dev,
-#  libpython3.10-dbg,
-#  python3.10-dev:any,
-#  python3.10-dbg:any,
+  libpython3.10-dev,
+  libpython3.10-dbg,
+  python3.10-dev:any,
+  python3.10-dbg:any,
   tk-dev, blt-dev (>= 2.4z-9), libgdbm-dev
 Build-Conflicts: tcl8.4-dev, tk8.4-dev, tcl8.5-dev, tk8.5-dev
 Standards-Version: 4.5.1

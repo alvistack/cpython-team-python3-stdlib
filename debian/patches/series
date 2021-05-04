@@ -52,7 +52,6 @@
 3.10/distutils-install-layout.diff
 3.10/distutils-link.diff
 3.10/distutils-sysconfig.diff
-3.10/bdist-wininst-notfound.diff
 3.10/multiarch.diff
 3.10/ext-no-libpython-link.diff
 3.10/multiarch-extname.diff

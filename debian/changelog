@@ -4,6 +4,7 @@ python3-stdlib-extensions (3.10.0~b1-1) UNRELEASED; urgency=medium
   * Update 3.9  extensions and modules to the 3.9.5 release (no changes).
   * Update 3.8  extensions and modules to the 3.8.10 release (no changes).
   * python3-distutils, python3-lib2to3: Breaks the stdlib (<< 3.10.0~b1).
+  * Refresh patches.
 
  -- Matthias Klose <doko@debian.org>  Tue, 04 May 2021 08:02:38 +0200
 

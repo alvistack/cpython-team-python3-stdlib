@@ -16,7 +16,7 @@ export SHELL = /bin/bash
 PYVERS	= $(shell py3versions -vs)
 PYVERS	= 3.9 3.10
 
-MIN_VER = 3.9.5-0~
+MIN_VER = 3.9.4-0~
 NEXT_VER = 3.11
 
 include /usr/share/dpkg/architecture.mk
@@ -194,7 +194,7 @@ binary-arch: build install
 binary: binary-indep binary-arch
 
 update-patches:
-	export QUILT_PATCHES=$(patchdir); \
+	export QUILT_PATCHES=debian/patches; \
 	while quilt push; do quilt refresh -pab --no-timestamps --no-index; done
 
 .PHONY: build clean binary-indep binary-arch binary install

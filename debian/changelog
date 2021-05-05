@@ -1,4 +1,10 @@
-python3-stdlib-extensions (3.10.0~b1-1) UNRELEASED; urgency=medium
+python3-stdlib-extensions (3.10.0~b1-2) experimental; urgency=medium
+
+  * Relax dependency on python3-defaults.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 04 May 2021 15:53:44 +0200
+
+python3-stdlib-extensions (3.10.0~b1-1) experimental; urgency=medium
 
   * Update 3.10 extensions and modules to the 3.9.10 beta1 snapshot.
   * Update 3.9  extensions and modules to the 3.9.5 release (no changes).
@@ -6,7 +12,7 @@ python3-stdlib-extensions (3.10.0~b1-1) UNRELEASED; urgency=medium
   * python3-distutils, python3-lib2to3: Breaks the stdlib (<< 3.10.0~b1).
   * Refresh patches.
 
- -- Matthias Klose <doko@debian.org>  Tue, 04 May 2021 08:02:38 +0200
+ -- Matthias Klose <doko@debian.org>  Tue, 04 May 2021 12:35:41 +0200
 
 python3-stdlib-extensions (3.10.0~a7-1) experimental; urgency=medium
 

@@ -1,3 +1,11 @@
+python3-stdlib-extensions (3.10.0~b1-3) experimental; urgency=medium
+
+  * When building 3.10 for releases newer than Debian 11 (bullseye) or
+    Ubuntu 21.04 (hirsute), build the _dbm extension using gdbm, and
+    include it in the python3-gdbm package.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 06 May 2021 15:07:21 +0200
+
 python3-stdlib-extensions (3.10.0~b1-2) experimental; urgency=medium
 
   * Relax dependency on python3-defaults.

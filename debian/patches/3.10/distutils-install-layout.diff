@@ -1,6 +1,16 @@
-# DP: distutils: Add an option --install-layout=deb, which
-# DP: - installs into $prefix/dist-packages instead of $prefix/site-packages.
-# DP: - doesn't encode the python version into the egg name.
+Description: Debian: Add a distutils option --install-layout=deb
+ This option:
+  - installs into $prefix/dist-packages instead of $prefix/site-packages.
+  - doesn't encode the python version into the egg name.
+ .
+ We install modules into dist-packages so that a local admin can build their
+ own cpython from source, and they won't see each others' installed modules.
+ This keeps Debian packaged applications working correctly, isolated from the
+ local cpython.
+ .
+ Customize site.py to import from Debian's dist-packages layout.
+
+Forwarded: not-needed
 
 --- a/3.10/Lib/distutils/command/install_egg_info.py
 +++ b/3.10/Lib/distutils/command/install_egg_info.py
@@ -80,8 +90,8 @@
 +
  # Copy from sysconfig._INSTALL_SCHEMES
  for key in SCHEME_KEYS:
-     sys_key = key
-@@ -141,6 +165,9 @@ class install(Command):
+     for distutils_scheme_name, sys_scheme_name in (
+@@ -148,6 +172,9 @@ class install(Command):
  
          ('record=', None,
           "filename in which to record list of installed files"),
@@ -91,7 +101,7 @@
          ]
  
      boolean_options = ['compile', 'force', 'skip-build']
-@@ -161,6 +188,7 @@ class install(Command):
+@@ -168,6 +195,7 @@ class install(Command):
          self.exec_prefix = None
          self.home = None
          self.user = 0
@@ -99,7 +109,7 @@
  
          # These select only the installation base; it's up to the user to
          # specify the installation scheme (currently, that means supplying
-@@ -183,6 +211,9 @@ class install(Command):
+@@ -190,6 +218,9 @@ class install(Command):
              self.install_userbase = USER_BASE
              self.install_usersite = USER_SITE
  
@@ -109,7 +119,7 @@
          self.compile = None
          self.optimize = None
  
-@@ -426,6 +457,7 @@ class install(Command):
+@@ -436,6 +467,7 @@ class install(Command):
              self.install_base = self.install_platbase = self.home
              self.select_scheme("unix_home")
          else:
@@ -117,7 +127,7 @@
              if self.prefix is None:
                  if self.exec_prefix is not None:
                      raise DistutilsOptionError(
-@@ -440,7 +472,26 @@ class install(Command):
+@@ -450,7 +482,26 @@ class install(Command):
  
              self.install_base = self.prefix
              self.install_platbase = self.exec_prefix
@@ -147,7 +157,7 @@
          """Finalizes options for non-posix platforms"""
 --- a/3.10/Lib/distutils/sysconfig.py
 +++ b/3.10/Lib/distutils/sysconfig.py
-@@ -217,6 +217,7 @@ def get_python_lib(plat_specific=0, stan
+@@ -320,6 +320,7 @@ def get_python_lib(plat_specific=0, stan
      If 'prefix' is supplied, use it instead of sys.base_prefix or
      sys.base_exec_prefix -- i.e., ignore 'plat_specific'.
      """
@@ -155,7 +165,7 @@
      if prefix is None:
          if standard_lib:
              prefix = plat_specific and BASE_EXEC_PREFIX or BASE_PREFIX
-@@ -235,6 +236,12 @@ def get_python_lib(plat_specific=0, stan
+@@ -338,6 +339,12 @@ def get_python_lib(plat_specific=0, stan
                                   "python" + get_python_version())
          if standard_lib:
              return libpython
@@ -168,34 +178,3 @@
          else:
              return os.path.join(libpython, "site-packages")
      elif os.name == "nt":
---- a/3.10/Lib/distutils/tests/test_bdist_dumb.py
-+++ b/3.10/Lib/distutils/tests/test_bdist_dumb.py
-@@ -85,7 +85,7 @@ class BuildDumbTestCase(support.TempdirM
-             fp.close()
- 
-         contents = sorted(filter(None, map(os.path.basename, contents)))
--        wanted = ['foo-0.1-py%s.%s.egg-info' % sys.version_info[:2], 'foo.py']
-+        wanted = ['foo-0.1.egg-info', 'foo.py']
-         if not sys.dont_write_bytecode:
-             wanted.append('foo.%s.pyc' % sys.implementation.cache_tag)
-         self.assertEqual(contents, sorted(wanted))
---- a/3.10/Lib/distutils/tests/test_install.py
-+++ b/3.10/Lib/distutils/tests/test_install.py
-@@ -205,7 +205,7 @@ class InstallTestCase(support.TempdirMan
-         found = [os.path.basename(line) for line in content.splitlines()]
-         expected = ['hello.py', 'hello.%s.pyc' % sys.implementation.cache_tag,
-                     'sayhi',
--                    'UNKNOWN-0.0.0-py%s.%s.egg-info' % sys.version_info[:2]]
-+                    'UNKNOWN-0.0.0.egg-info']
-         self.assertEqual(found, expected)
- 
-     def test_record_extensions(self):
-@@ -238,7 +238,7 @@ class InstallTestCase(support.TempdirMan
- 
-         found = [os.path.basename(line) for line in content.splitlines()]
-         expected = [_make_ext_name('xx'),
--                    'UNKNOWN-0.0.0-py%s.%s.egg-info' % sys.version_info[:2]]
-+                    'UNKNOWN-0.0.0.egg-info']
-         self.assertEqual(found, expected)
- 
-     def test_debug_mode(self):

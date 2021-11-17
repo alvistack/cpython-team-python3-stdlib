@@ -1,3 +1,17 @@
+python3-stdlib-extensions (3.9.9-2) unstable; urgency=medium
+
+  * Fix the 3.10 build.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 17 Nov 2021 14:53:22 +0100
+
+python3-stdlib-extensions (3.9.9-1) unstable; urgency=medium
+
+  * Update 3.9 extensions and modules to the 3.9.9 release.
+  * Build again the _dbm extension using libdb-dev.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 17 Nov 2021 07:55:21 +0100
+
 python3-stdlib-extensions (3.9.8-1) unstable; urgency=medium
 
   * Update 3.10 extensions and modules to the 3.9.10 release.

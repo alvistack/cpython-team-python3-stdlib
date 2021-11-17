@@ -21,14 +21,14 @@ PYVERS	= 3.9 3.10
 MIN_VER = 3.9.4-0~
 NEXT_VER = 3.11
 
-# FIXME: add bullseye when uploading to unstable, after bullseye is released
-ifeq (,$(filter $(distrelase), jessie stretch buster precise trusty xenial bionic focal groovy hirsute))
-  ifneq (,$(filter 3.1% 3.2%, $(PYVERS)))
-    with_dbmmodule = yes
-    dbm_breaks = '-Vdbm:Breaks=libpython3.10-stdlib (<< 3.10.0~b1-2~)'
-    dbmdbg_breaks = '-Vdbmdbg:Breaks=libpython3.10-dbg (<< 3.10.0~b1-2~)'
-  endif
-endif
+# FIXME: remove sid when uploading to unstable, after bullseye is released
+#ifeq (,$(filter $(distrelase), jessie stretch buster bullseye bookworm sid precise trusty xenial bionic focal groovy hirsute))
+#  ifneq (,$(filter 3.1% 3.2%, $(PYVERS)))
+#    with_dbmmodule = yes
+#    dbm_breaks = '-Vdbm:Breaks=libpython3.10-stdlib (<< 3.10.0~b1-2~)'
+#    dbmdbg_breaks = '-Vdbmdbg:Breaks=libpython3.10-dbg (<< 3.10.0~b1-2~)'
+#  endif
+#endif
 
 include /usr/share/dpkg/architecture.mk
 

@@ -59,3 +59,4 @@
 3.10/mangle-fstack-protector.diff
 3.10/lib2to3-no-pickled-grammar.diff
 add-dbm-module.diff
+no-dbm.diff

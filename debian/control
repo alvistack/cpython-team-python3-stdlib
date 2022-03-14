@@ -111,4 +111,4 @@ Description: Interactive high-level object-oriented language (lib2to3)
  includes an extensive class library with lots of goodies for
  network programming, system administration, sounds and graphics.
  .
- This package contains the lib2to3 library.
+ This package contains the lib2to3 library, a Python2 to Python3 converter.

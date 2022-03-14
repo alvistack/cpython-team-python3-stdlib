@@ -7,6 +7,9 @@ python3-stdlib-extensions (3.9.10-2) unstable; urgency=medium
     sysconfig, and distutils modules. Stop checking for PYTHONUSERBASE or
     VIRTUAL_ENV environment variables.
 
+  [ Matthias Klose ]
+  * Update python3-lib2to3 package description. Closes: #983431.
+
  -- Stefano Rivera <stefanor@debian.org>  Mon, 14 Mar 2022 04:40:48 +0100
 
 python3-stdlib-extensions (3.9.10-1) unstable; urgency=medium

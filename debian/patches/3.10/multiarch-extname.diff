@@ -72,7 +72,7 @@ this patch can be dropped for python3.5 final, if the upstream chage is kept.
          # enable custom installation, known values: deb
          self.install_layout = None
 +        self.multiarch = None
-         
+ 
          self.compile = None
          self.optimize = None
 @@ -474,6 +475,8 @@ class install(Command):

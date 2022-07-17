@@ -548,69 +548,6 @@ class PyBuildExt(build_ext):
 
         # XXX Omitted modules: gl, pure, dl, SGI-specific modules
 
-        # The standard Unix dbm module:
-        if True:
-            dbm_order = "gdbm:ndbm:bdb".split(":")
-            dbmext = None
-            for cand in dbm_order:
-                if cand == "ndbm":
-                    if find_file("ndbm.h", inc_dirs, []) is not None:
-                        # Some systems have -lndbm, others have -lgdbm_compat,
-                        # others don't have either
-                        if self.compiler.find_library_file(lib_dirs,
-                                                               'ndbm'):
-                            ndbm_libs = ['ndbm']
-                        elif self.compiler.find_library_file(lib_dirs,
-                                                             'gdbm_compat'):
-                            ndbm_libs = ['gdbm_compat']
-                        else:
-                            ndbm_libs = []
-                        dbmext = Extension('_dbm', ['Modules/_dbmmodule.c'],
-                                           define_macros=[
-                                               ('HAVE_NDBM_H',None),
-                                               ],
-                                           libraries=ndbm_libs)
-                        break
-
-                elif cand == "gdbm":
-                    if self.compiler.find_library_file(lib_dirs, 'gdbm'):
-                        gdbm_libs = ['gdbm']
-                        if self.compiler.find_library_file(lib_dirs,
-                                                               'gdbm_compat'):
-                            gdbm_libs.append('gdbm_compat')
-                        if find_file("gdbm/ndbm.h", inc_dirs, []) is not None:
-                            dbmext = Extension(
-                                '_dbm', ['Modules/_dbmmodule.c'],
-                                define_macros=[
-                                    ('HAVE_GDBM_NDBM_H', None),
-                                    ],
-                                libraries = gdbm_libs)
-                            break
-                        if find_file("gdbm-ndbm.h", inc_dirs, []) is not None:
-                            dbmext = Extension(
-                                '_dbm', ['Modules/_dbmmodule.c'],
-                                define_macros=[
-                                    ('HAVE_GDBM_DASH_NDBM_H', None),
-                                    ],
-                                libraries = gdbm_libs)
-                            break
-                elif cand == "bdb":
-                    if db_incs is not None:
-                        dbmext = Extension('_dbm', ['Modules/_dbmmodule.c'],
-                                           library_dirs=dblib_dir,
-                                           runtime_library_dirs=dblib_dir,
-                                           include_dirs=db_incs,
-                                           define_macros=[
-                                               ('HAVE_BERKDB_H', None),
-                                               ('DB_DBM_HSEARCH', None),
-                                               ],
-                                           libraries=dblibs)
-                        break
-            if dbmext is not None:
-                exts.append(dbmext)
-            else:
-                missing.append('_dbm')
-
         # Anthony Baxter's gdbm module.  GNU dbm(3) will require -lgdbm:
         if (True or 'gdbm' in dbm_order and
             self.compiler.find_library_file(lib_dirs, 'gdbm')):

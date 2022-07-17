@@ -755,9 +755,9 @@
 +/*[clinic end generated code: output=6947b1115df66f7c input=a9049054013a1b77]*/
 --- a/3.10/setup.py
 +++ b/3.10/setup.py
-@@ -611,6 +611,69 @@ class PyBuildExt(build_ext):
-             else:
-                 missing.append('_dbm')
+@@ -548,6 +548,69 @@ class PyBuildExt(build_ext):
+ 
+         # XXX Omitted modules: gl, pure, dl, SGI-specific modules
  
 +        # The standard Unix dbm module:
 +        if True:

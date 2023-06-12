@@ -70,5 +70,7 @@
 3.11/lib2to3-no-pickled-grammar.diff
 # 3.12
 3.12/lib2to3-no-pickled-grammar.diff
+3.12/add-imp-module.diff
+#
 add-dbm-module.diff
 no-dbm.diff

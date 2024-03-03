@@ -101,6 +101,7 @@ extern PyTypeObject _PyExc_MemoryError;
                 { .threshold = 10, }, \
             }, \
         }, \
+        .object_state = _py_object_state_INIT(INTERP), \
         .dtoa = _dtoa_state_INIT(&(INTERP)), \
         .dict_state = _dict_state_INIT, \
         .func_state = { \
@@ -118,6 +119,7 @@ extern PyTypeObject _PyExc_MemoryError;
                 }, \
                 .last_resort_memory_error = { \
                     _PyObject_HEAD_INIT(&_PyExc_MemoryError) \
+                    .args = (PyObject*)&_Py_SINGLETON(tuple_empty) \
                 }, \
             }, \
         }, \
@@ -129,6 +131,16 @@ extern PyTypeObject _PyExc_MemoryError;
         .py_recursion_limit = Py_DEFAULT_RECURSION_LIMIT, \
         .context_ver = 1, \
     }
+
+#ifdef Py_TRACE_REFS
+# define _py_object_state_INIT(INTERP) \
+    { \
+        .refchain = {&INTERP.object_state.refchain, &INTERP.object_state.refchain}, \
+    }
+#else
+# define _py_object_state_INIT(INTERP) \
+    { 0 }
+#endif
 
 
 // global objects
@@ -153,6 +165,7 @@ extern PyTypeObject _PyExc_MemoryError;
             .kind = 1, \
             .compact = 1, \
             .ascii = (ASCII), \
+            .statically_allocated = 1, \
         }, \
     }
 #define _PyASCIIObject_INIT(LITERAL) \

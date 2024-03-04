@@ -1,3 +1,15 @@
+python3-stdlib-extensions (3.12.2-3) unstable; urgency=medium
+
+  * Build-depend on libpython3.11t64-dbg, libpython3.12t64-dbg.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 04 Mar 2024 04:00:22 +0100
+
+python3-stdlib-extensions (3.12.2-2) unstable; urgency=medium
+
+  * Relax python dependencies. Closes: #1065366.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 03 Mar 2024 14:40:26 +0100
+
 python3-stdlib-extensions (3.12.2-1) unstable; urgency=medium
 
   * Update 3.11 extensions and modules to 3.11.8 release.
